@@ -9,8 +9,15 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        Text("Hello, world!")
-            .padding()
+        NavigationView {
+            ZStack {
+                PageView(features.map { destination in
+                    NavigationLink(destination: LandmarkDetail(landmark: destination)) {
+                        FeatureCard(landmark: destination)
+                    }
+                }, autoPlay: 5).aspectRatio(3/2, contentMode: .fit)
+            }
+        }
     }
 }
 
